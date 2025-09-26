@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -57,7 +55,7 @@ fun HikingApp() {
         ) {
             composable("dashboard") { DashboardScreen() }
             composable("chat") { ChatMapWithPopupScreen() }
-            composable("llmscreen") { LLMScreen("GjkSmLTjodeyDjJ74RPGNbXarbh0") }
+            composable("llmscreen") { LLMScreen(BuildConfig.APERTUS_API_KEY) }
             composable("profile") { ProfileScreen() }
         }
     }

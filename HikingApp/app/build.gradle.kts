@@ -1,8 +1,16 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
 }
+
+val localProperties = Properties().apply {
+    load(FileInputStream(rootProject.file("local.properties")))
+}
+val apertusApiKey: String = localProperties.getProperty("APERTUS_API_KEY") ?: ""
 
 android {
     namespace = "com.example.hikingapp"
@@ -14,8 +22,13 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-
+        buildConfigField("String", "APERTUS_API_KEY", "\"$apertusApiKey\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        compose = true
+        buildConfig = true   // ✅ enable BuildConfig generation
     }
 
     buildTypes {
