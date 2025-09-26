@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -33,8 +35,8 @@ fun HikingApp() {
     val tabs = listOf(
         TopLevelDestination("dashboard", R.drawable.icon_home, "Home"),
         TopLevelDestination("chat", R.drawable.icon_map, "Chat"),
-        TopLevelDestination("calendar", R.drawable.icon_menu, "Calendar"),
-        TopLevelDestination("profile", R.drawable.profile, "Profile")
+        TopLevelDestination("llmscreen", R.drawable.profile, "LLM"),
+        TopLevelDestination("profile", R.drawable.icon_menu, "Profile")
     )
 
 
@@ -55,7 +57,7 @@ fun HikingApp() {
         ) {
             composable("dashboard") { DashboardScreen() }
             composable("chat") { ChatMapWithPopupScreen() }
-            composable("calendar") { LLMScreen() }
+            composable("llmscreen") { LLMScreen("GjkSmLTjodeyDjJ74RPGNbXarbh0") }
             composable("profile") { ProfileScreen() }
         }
     }

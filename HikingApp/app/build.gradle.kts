@@ -41,7 +41,8 @@ android {
 
 dependencies {
 
-
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+    implementation("com.google.code.gson:gson:2.10.1")
     implementation("org.osmdroid:osmdroid-android:6.1.18")
     implementation("org.osmdroid:osmdroid-wms:6.1.18")
     implementation("androidx.navigation:navigation-compose:2.8.3")
