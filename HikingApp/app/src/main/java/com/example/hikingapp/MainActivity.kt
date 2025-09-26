@@ -14,8 +14,8 @@ import com.example.hikingapp.ui.navigation.BottomNavigationMenu
 import com.example.hikingapp.ui.navigation.NavigationActions
 import com.example.hikingapp.ui.navigation.TopLevelDestination
 import com.example.hikingapp.ui.screens.DashboardScreen
-import com.example.hikingapp.ui.screens.ChatScreen
 import com.example.hikingapp.ui.screens.CalendarScreen
+import com.example.hikingapp.ui.screens.ChatMapWithPopupScreen
 import com.example.hikingapp.ui.screens.ProfileScreen
 
 class MainActivity : ComponentActivity() {
@@ -54,7 +54,7 @@ fun HikingApp() {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable("dashboard") { DashboardScreen() }
-            composable("chat") { ChatScreen() }
+            composable("chat") { ChatMapWithPopupScreen() }
             composable("calendar") { CalendarScreen() }
             composable("profile") { ProfileScreen() }
         }
