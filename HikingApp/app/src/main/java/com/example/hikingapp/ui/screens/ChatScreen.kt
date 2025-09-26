@@ -18,6 +18,9 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
+import com.example.hikingapp.R
+
+
 
 @Composable
 fun ChatMapWithPopupScreen() {
@@ -52,12 +55,12 @@ fun ChatMapWithPopupScreen() {
                         val markValue = hike.mark ?: 0.0
                         val color = when {
                             markValue < 2.0 -> Color.RED
-                            markValue < 3.5 -> Color.parseColor("#FFA500") // orange
-                            else -> Color.parseColor("#006400")
+                            markValue < 3.5 -> Color.parseColor("#FFA500") // Orange
+                            else -> Color.parseColor("#006400") // Dark green
                         }
-                        val defaultPin = ctx.getDrawable(org.osmdroid.library.R.drawable.marker_default)?.mutate()
-                        defaultPin?.setTint(color)
-                        marker.icon = defaultPin
+                        val customPin = androidx.core.content.ContextCompat.getDrawable(ctx, R.drawable.icon_map)?.mutate()
+                        customPin?.setTint(color)
+                        marker.icon = customPin
 
                         marker.setOnMarkerClickListener { _, _ ->
                             selectedHike = hike
