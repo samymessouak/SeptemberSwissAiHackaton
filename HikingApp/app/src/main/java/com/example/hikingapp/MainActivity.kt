@@ -14,7 +14,7 @@ import com.example.hikingapp.ui.navigation.BottomNavigationMenu
 import com.example.hikingapp.ui.navigation.NavigationActions
 import com.example.hikingapp.ui.navigation.TopLevelDestination
 import com.example.hikingapp.ui.screens.DashboardScreen
-import com.example.hikingapp.ui.screens.CalendarScreen
+import com.example.hikingapp.ui.screens.LLMScreen
 import com.example.hikingapp.ui.screens.ChatMapWithPopupScreen
 import com.example.hikingapp.ui.screens.ProfileScreen
 
@@ -55,7 +55,7 @@ fun HikingApp() {
         ) {
             composable("dashboard") { DashboardScreen() }
             composable("chat") { ChatMapWithPopupScreen() }
-            composable("calendar") { CalendarScreen() }
+            composable("calendar") { LLMScreen() }
             composable("profile") { ProfileScreen() }
         }
     }
