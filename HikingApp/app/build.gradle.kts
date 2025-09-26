@@ -1,8 +1,16 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
 }
+
+val localProperties = Properties().apply {
+    load(FileInputStream(rootProject.file("local.properties")))
+}
+val apertusApiKey: String = localProperties.getProperty("APERTUS_API_KEY") ?: ""
 
 android {
     namespace = "com.example.hikingapp"
@@ -14,8 +22,13 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-
+        buildConfigField("String", "APERTUS_API_KEY", "\"$apertusApiKey\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        compose = true
+        buildConfig = true   // ✅ enable BuildConfig generation
     }
 
     buildTypes {
@@ -40,10 +53,16 @@ android {
 }
 
 dependencies {
+
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("org.osmdroid:osmdroid-android:6.1.18")
+    implementation("org.osmdroid:osmdroid-wms:6.1.18")
     implementation("androidx.navigation:navigation-compose:2.8.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
     implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("androidx.compose.material:material-icons-extended:<1.6.0>")
     implementation(files("libs/meow-bottom-navigation-java-1.2.0.aar"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

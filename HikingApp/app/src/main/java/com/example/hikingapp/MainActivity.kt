@@ -14,8 +14,8 @@ import com.example.hikingapp.ui.navigation.BottomNavigationMenu
 import com.example.hikingapp.ui.navigation.NavigationActions
 import com.example.hikingapp.ui.navigation.TopLevelDestination
 import com.example.hikingapp.ui.screens.DashboardScreen
-import com.example.hikingapp.ui.screens.ChatScreen
-import com.example.hikingapp.ui.screens.CalendarScreen
+import com.example.hikingapp.ui.screens.LLMScreen
+import com.example.hikingapp.ui.screens.ChatMapWithPopupScreen
 import com.example.hikingapp.ui.screens.ProfileScreen
 
 class MainActivity : ComponentActivity() {
@@ -33,8 +33,8 @@ fun HikingApp() {
     val tabs = listOf(
         TopLevelDestination("dashboard", R.drawable.icon_home, "Home"),
         TopLevelDestination("chat", R.drawable.icon_map, "Chat"),
-        TopLevelDestination("calendar", R.drawable.icon_menu, "Calendar"),
-        TopLevelDestination("profile", R.drawable.profile, "Profile")
+        TopLevelDestination("llmscreen", R.drawable.profile, "LLM"),
+        TopLevelDestination("profile", R.drawable.icon_menu, "Profile")
     )
 
 
@@ -54,8 +54,8 @@ fun HikingApp() {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable("dashboard") { DashboardScreen() }
-            composable("chat") { ChatScreen() }
-            composable("calendar") { CalendarScreen() }
+            composable("chat") { ChatMapWithPopupScreen() }
+            composable("llmscreen") { LLMScreen(BuildConfig.APERTUS_API_KEY) }
             composable("profile") { ProfileScreen() }
         }
     }
